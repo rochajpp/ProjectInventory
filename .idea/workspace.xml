@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02a2b34f-0090-4de4-a710-b2e44583e451" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/edu/uni7/tecnicas/controller/FuncionarioController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/edu/uni7/tecnicas/entities/Funcionario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/edu/uni7/tecnicas/entities/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/edu/uni7/tecnicas/repository/FuncionarioRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styleIndex.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/edu/uni7/tecnicas/controller/ItemController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/uni7/tecnicas/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/edu/uni7/tecnicas/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/uni7/tecnicas/controller/PessoaController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/uni7/tecnicas/entities/Pessoa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/uni7/tecnicas/repository/PessoaRepository.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,9 +75,17 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rocha\IdeaProjects\uni7-tecnicas-2022.2\src\main\resources\static" />
+      <recent name="C:\Users\rocha\IdeaProjects\uni7-tecnicas-2022.2\src\main\resources\templates" />
+      <recent name="C:\Users\rocha\IdeaProjects\uni7-tecnicas-2022.2\src\main\resources\static\inventario" />
+      <recent name="C:\Users\rocha\IdeaProjects\uni7-tecnicas-2022.2\src\main\resources\static\iventario" />
       <recent name="C:\Users\joaopauloadm\Documents\uni7-tecnicas-2022.2\src\main\resources\templates" />
-      <recent name="C:\Users\joaopauloadm\Documents\uni7-tecnicas-2022.2\src\main\resources\static" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle -warning-mode=(all,fail,none,summary)" />
+    </option>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
@@ -99,13 +97,6 @@
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <module name="uni7-tecnicas-2022.2" />
       <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="tecnicas.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.edu.uni7.tecnicas.Application" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
