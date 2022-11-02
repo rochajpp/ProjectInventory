@@ -2,36 +2,46 @@ package br.edu.uni7.tecnicas.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 
 @Entity
 public class Item {
     @Id
-    private Integer indetificador;
-    private Date dataDeInclusao;
+    private Integer identificador;
+    private LocalDate dataDeInclusao;
     private String fabricante;
     private String modelo;
     private Integer anoDeFabricacao;
-    private Date ultimaAtualizacao;
+    private LocalDate ultimaAtualizacao;
 
-    public Item(String modelo){
+    public Item(String fabricante, String modelo, Integer anoDeFabricacao){
+        this.fabricante = fabricante;
         this.modelo = modelo;
+        this. anoDeFabricacao = anoDeFabricacao;
     }
 
+    public Item(){
 
-    public Integer getIndetificador() {
-        return indetificador;
     }
 
-    public void setIndetificador(Integer indetificador) {
-        this.indetificador = indetificador;
+    public Integer gerarNovoIdentificador(){
+        return (int)Math.floor(Math.random() * 1000);
+    }
+    public Integer getIdentificador() {
+        return identificador;
     }
 
-    public Date getDataDeInclusao() {
+    public void setIdentificador(Integer identificador) {
+        this.identificador = identificador;
+    }
+
+    public LocalDate getDataDeInclusao() {
         return dataDeInclusao;
     }
 
-    public void setDataDeInclusao(Date dataDeInclusao) {
+    public void setDataDeInclusao(LocalDate dataDeInclusao) {
         this.dataDeInclusao = dataDeInclusao;
     }
 
@@ -59,11 +69,23 @@ public class Item {
         this.anoDeFabricacao = anoDeFabricacao;
     }
 
-    public Date getUltimaAtualizacao() {
+    public LocalDate getUltimaAtualizacao() {
         return ultimaAtualizacao;
     }
 
-    public void setUltimaAtualizacao(Date ultimaAtualizacao) {
+    public void setUltimaAtualizacao(LocalDate ultimaAtualizacao) {
         this.ultimaAtualizacao = ultimaAtualizacao;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "identificador='" + identificador + '\'' +
+                ", dataDeInclusao=" + dataDeInclusao +
+                ", fabricante='" + fabricante + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", anoDeFabricacao=" + anoDeFabricacao +
+                ", ultimaAtualizacao=" + ultimaAtualizacao +
+                '}';
     }
 }

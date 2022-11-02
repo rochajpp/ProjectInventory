@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/styleIndex.css">
+  <script src="script.js"></script>
+  <title>Create item</title>
+</head>
+<body>
+  <div class="contentBody create">
+    <form>
+      <h1>Novo item</h1>
+      <label id="model" name="model">Modelo</label>
+      <input id="modelo" for="model" placeholder="Modelo">
+
+      <label id="manufacturer" name="manufacturer">Fabricante</label>
+      <input id="fabricante" for="manufacturer" placeholder="Fabricante">
+
+      <label id="yearFabrication" name="yearFabrication">Ano de fabricação</label>
+      <input id="anoDeFabricacao" for="yearFabrication" placeholder="Ano de fabricação">
+      <button type="button" onclick="sendData()" class="newItem">Enviar</button>
+    </form>
+  </div>
+</body>
+</html>
