@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ItemController {
     private ItemRepository repository;
+    Item teste = new Item("Teste");
+
 
     @RequestMapping(value = "/itens", method = RequestMethod.GET)
     @ResponseBody
     public Iterable<Item> listItens(){
+        repository.save(teste);
         return repository.findAll();
     }
 }

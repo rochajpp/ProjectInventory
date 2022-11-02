@@ -3,3 +3,21 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.contentBody{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(204, 204, 204);
+}
+.inventory{
+    text-align: center;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+th, td{
+    padding: 10px 20px;
+    border: 1px solid #000;
+}

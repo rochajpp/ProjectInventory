@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02a2b34f-0090-4de4-a710-b2e44583e451" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/edu/uni7/tecnicas/controller/ItemController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/uni7/tecnicas/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/edu/uni7/tecnicas/controller/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/uni7/tecnicas/entities/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/edu/uni7/tecnicas/entities/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styleIndex.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/styleIndex.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

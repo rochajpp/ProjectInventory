@@ -14,6 +14,9 @@ public class Item {
     private Integer anoDeFabricacao;
     private Date ultimaAtualizacao;
 
+    public Item(String modelo){
+        this.modelo = modelo;
+    }
 
 
     public Integer getIndetificador() {
