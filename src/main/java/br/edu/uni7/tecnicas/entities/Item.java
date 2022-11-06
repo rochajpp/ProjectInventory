@@ -15,12 +15,9 @@ public class Item {
     private String modelo;
     private Integer anoDeFabricacao;
     private LocalDate ultimaAtualizacao;
+    private Funcionario funcionario = null;
 
-    public Item(String fabricante, String modelo, Integer anoDeFabricacao){
-        this.fabricante = fabricante;
-        this.modelo = modelo;
-        this. anoDeFabricacao = anoDeFabricacao;
-    }
+
 
     public Item(){
 
