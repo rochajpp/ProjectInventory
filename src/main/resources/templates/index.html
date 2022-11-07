@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/styleIndex.css">
+    <title>Inventory</title>
+</head>
+<body>
+<div class="contentBody">
+    <div class="buttons">
+        <button class="button" type="button" onclick="location.href='http://localhost:8080/item_create.html'">Novo item</button>
+        <button class="button" type="button" >Deletar item</button>
+    </div>
+    <table class="inventory" border="1">
+        <thead>
+        <tr class="type">
+            <td class="indentificationNumber">
+                Identificador
+            </td>
+            <td class="model">
+                Modelo
+            </td>
+            <td class="manufacturer">
+                Fabricante
+            </td>
+            <td class="yearFabrication">
+                Ano de fabricação
+            </td>
+            <td class="inclusionDate">
+                Data de inclusáo
+            </td>
+            <td class="lastUpdate">
+                Última atualização
+            </td>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+
+</div>
+</body>
+<script src="script.js"></script>
+</html>

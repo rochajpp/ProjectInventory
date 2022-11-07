@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.contentBody{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background-color: rgb(204, 204, 204);
+    font-family: sans-serif;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+.inventory{
+    text-align: center;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+th, td{
+    padding: 10px 20px;
+    border: 1px solid #000;
+}
+.contentBody form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 30rem;
+    height: 30rem;
+    border: 1px solid black;
+    border-radius: 2rem;
+    background-color: white;
+}
+input{
+    height: 2rem;
+    width: 20rem;
+    text-align: center;
+}
+.newItem{
+    height: 2rem;
+    width: 20rem;
+    background-color: black;
+    color: white;
+    margin-top: 2rem;
+    transition: 0.5s;
+}
+.newItem:hover{
+    cursor: pointer;
+    background-color: gray;
+    border: none;
+}
+.button{
+    width: 8rem;
+    height: 2.5rem;
+    background-color: black;
+    color: white;
+    transition: 0.5s;
+}
+.button:hover{
+    cursor: pointer;
+    background-color: gray;
+    border: none;
+}
+

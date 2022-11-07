@@ -1,0 +1,33 @@
+/*
+
+Trabalho final Técnicas de Programação
+Prazo de entrega: 02/12/2022
+
+Construa um sistema que permite ao usuário gerenciar o inventário de uma empresa.
+O inventário é composto por um conjunto de bens que formam o patrimônio da empresa,
+onde cada item possui um número identificador, data de inclusão no sistema, fabricante,
+modelo, ano de fabricação e a data da última atualização. Além disso, o sistema permite
+que um determinado item seja emprestado para algum funcionário, que sempre é identificado
+apenas pelo seu número de matrícula.
+
+O sistema deve ser feito de forma que o backend e o frontend se comuniquem através de uma API REST.
+Dessa forma o frontend deve ser implementado em Javascript, CSS e HTML, enquanto o backend através de Java,
+ Spring e HSQLDB. O sistema deve permitir realizar cadastro, atualização, exclusão e listagem do inventário.
+
+Como forma de criar estilos CSS de forma simplificada,
+verifique sugestão de biblioteca Bootstrap: https://getbootstrap.com/
+
+*/
+package br.edu.uni7.tecnicas;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+}
