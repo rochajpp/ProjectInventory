@@ -2,6 +2,7 @@ package br.edu.uni7.tecnicas.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,6 +16,7 @@ public class Item {
     private String modelo;
     private Integer anoDeFabricacao;
     private LocalDate ultimaAtualizacao;
+    @ManyToOne
     private Funcionario funcionario = null;
 
 
