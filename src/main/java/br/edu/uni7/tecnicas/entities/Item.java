@@ -3,6 +3,9 @@ package br.edu.uni7.tecnicas.entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import javax.persistence.OneToMany;
+
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
