@@ -1,14 +1,15 @@
 const url = 'http://localhost:8080';
 const itemEndpoint = url + '/itens';
 
-function loadItems(){
+async function loadItems(){
     fetch(itemEndpoint)
         .then((response) => response.json())
         .then((data) => {
-            var i = 0;
-            for(const [key, value] of Object.entries(data)){
-               console.log(data)
-                document.getElementById('identificationNumber').innerHTML = data.get(i).identificador;
+
+            console.log(data)
+            for(var i = 0; i < data.length; i++){
+                document.getElementById('identificationNumber').innerHTML
+
 
             }
 
