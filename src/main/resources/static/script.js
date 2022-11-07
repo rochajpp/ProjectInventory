@@ -1,4 +1,9 @@
 console.log("Teste");
+
+function loadItems(){
+
+}
+
 function sendData(){
     let model = document.querySelector('#modelo');
     let manufacturer = document.querySelector('#fabricante');
