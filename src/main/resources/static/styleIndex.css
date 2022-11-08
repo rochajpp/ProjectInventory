@@ -67,6 +67,7 @@ input{
     color: white;
     transition: 0.5s;
 }
+
 .button:hover{
     cursor: pointer;
     background-color: gray;
@@ -80,4 +81,19 @@ thead tr{
     background-color: black;
     color: white;
 }
+thead tr td{
+    border: 1px solid white;
+}
+.tbody tr{
+    cursor: pointer;
+    background-color: gray;
+}
+
+#tbody tr .buttons{
+    gap: 0;
+}
+#tbody tr button {
+    border: 1px solid white;
+}
+
 

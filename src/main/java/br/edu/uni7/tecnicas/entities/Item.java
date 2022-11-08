@@ -29,7 +29,7 @@ public class Item {
     }
 
     public Integer gerarNovoIdentificador(){
-        return (int)Math.floor(Math.random() * 1000);
+        return (int)Math.floor(Math.random() * (9999 - 1000) + 1000);
     }
     public Integer getIdentificador() {
         return identificador;

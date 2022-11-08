@@ -1,20 +1,6 @@
 const url = 'http://localhost:8080';
 const itemEndpoint = url + '/itens';
 
-//function loadItems(){
-//
-//    fetch(itemEndpoint)
-//        .then((response) => response.json())
-//        .then((data) => {
-//
-//
-//
-//
-//        });
-//}
-
-
-
 function fazGet(url){
     let request = new XMLHttpRequest();
     request.open("GET", url, false);
@@ -23,6 +9,19 @@ function fazGet(url){
 }
 
 function criaLinha(item){
+    botoes = document.createElement("div");
+    botoes.classList.add("buttons");
+    botao = document.createElement("button");
+    botao.textContent = "Deletar";
+    botao.classList.add("button");
+    botao2 = document.createElement("button");
+    botao2.textContent = "Alterar";
+    botao2.classList.add("button");
+    botao2.onclick = function(){location.href="http://localhost:8080/alterar_item.html"};
+    botoes.appendChild(botao2);
+    botoes.appendChild(botao);
+
+
     linha = document.createElement("tr");
     tdIdentificador = document.createElement("td");
     tdModelo = document.createElement("td");
@@ -44,6 +43,8 @@ function criaLinha(item){
     linha.appendChild(tdAnoDeFabricacao);
     linha.appendChild(tdDataDeInclusao);
     linha.appendChild(tdUltimaAtualizacao);
+    linha.appendChild(botoes);
+
 
     return linha;
 }
