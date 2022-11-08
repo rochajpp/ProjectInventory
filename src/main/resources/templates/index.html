@@ -7,11 +7,13 @@
     <link rel="stylesheet" type="text/css" href="/styleIndex.css">
     <title>Inventory</title>
 </head>
-<body onload="loadItems()">
+<body onload="main()">
 <div class="contentBody">
     <div class="buttons">
         <button class="button" type="button" onclick="location.href='http://localhost:8080/item_create.html'">Novo item</button>
         <button class="button" type="button" >Deletar item</button>
+        <button class="button" type="button">Alterar item</button>
+        <button class="button" type="button">Cadastrar funcionário</button>
     </div>
     <table class="inventory" border="1">
         <thead>
@@ -29,7 +31,7 @@
                 Ano de fabricação
             </td>
             <td class="inclusionDate">
-                Data de inclusáo
+                Data de inclusão
             </td>
             <td class="lastUpdate">
                 Última atualização
@@ -37,26 +39,7 @@
         </tr>
         </thead>
         <tbody id="tbody">
-        <tr id="type">
-            <td id="identificationNumber">
 
-            </td>
-            <td id="model">
-
-            </td>
-            <td id="manufacturer">
-
-            </td>
-            <td id="yearFabrication">
-
-            </td>
-            <td id="inclusionDate">
-
-            </td>
-            <td id="lastUpdate">
-
-            </td>
-        </tr>
         </tbody>
     </table>
 

@@ -72,4 +72,12 @@ input{
     background-color: gray;
     border: none;
 }
+#tbody tr{
+    background-color: white;
+}
+
+thead tr{
+    background-color: black;
+    color: white;
+}
 
