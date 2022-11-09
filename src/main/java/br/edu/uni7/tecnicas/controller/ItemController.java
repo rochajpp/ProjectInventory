@@ -41,4 +41,12 @@ public class ItemController {
         List<Item> itens = (List<Item>) repository.findAll();
         return new ResponseEntity<List<Item>>(itens, HttpStatus.OK);
     }
+    @RequestMapping(value = "/itens", method = RequestMethod.PUT)
+    @ResponseBody
+    public ResponseEntity<Item> atualizarItem(@RequestBody Item item){
+
+        Item itemUp = repository.save(item);
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

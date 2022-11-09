@@ -8,6 +8,10 @@ function fazGet(url){
     return request.responseText;
 }
 
+function alterar(){
+
+}
+
 function criaLinha(item){
     botoes = document.createElement("div");
     botoes.classList.add("buttons");
@@ -17,11 +21,9 @@ function criaLinha(item){
     botao2 = document.createElement("button");
     botao2.textContent = "Alterar";
     botao2.classList.add("button");
-    botao2.onclick = function(){location.href="http://localhost:8080/alterar_item.html"};
+    botao2.onclick = function(){location.href = "http://localhost:8080/alterar_item.html"; };
     botoes.appendChild(botao2);
     botoes.appendChild(botao);
-
-
     linha = document.createElement("tr");
     tdIdentificador = document.createElement("td");
     tdModelo = document.createElement("td");
@@ -50,12 +52,12 @@ function criaLinha(item){
 }
 function main(){
 
-    let data = fazGet("/itens")
-    let itens = JSON.parse(data)
-    let tabela = document.getElementById('tbody')
+    let data = fazGet("/itens");
+    let itens = JSON.parse(data);
+    let tabela = document.getElementById('tbody');
     itens.forEach(element => {
         let linha = criaLinha(element);
-        tabela.appendChild(linha)
+        tabela.appendChild(linha);
     })
 }
 
@@ -73,3 +75,5 @@ function sendData(){
     sendData.send(data);
 
 }
+
+
