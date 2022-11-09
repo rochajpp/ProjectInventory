@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ItemController {
@@ -41,11 +42,13 @@ public class ItemController {
         List<Item> itens = (List<Item>) repository.findAll();
         return new ResponseEntity<List<Item>>(itens, HttpStatus.OK);
     }
-    @RequestMapping(value = "/itens", method = RequestMethod.PUT)
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
     @ResponseBody
     public ResponseEntity<Item> atualizarItem(@RequestBody Item item){
+        Optional<Item> itemUpdat = repository.findById(item.getIdentificador());
+        item.setUltimaAtualizacao(LocalDate.now());
 
-        Item itemUp = repository.save(item);
+        repository.save(item);
 
         return new ResponseEntity(HttpStatus.OK);
     }
