@@ -9,7 +9,8 @@ function fazGet(url){
 }
 
 function alterar(){
-
+    const queryString = window.location.search;
+    console.log(queryString)
 }
 
 function criaLinha(item){
@@ -73,7 +74,12 @@ function sendData(){
     var data = JSON.stringify({"modelo": model.value, "fabricante": manufacturer.value, "anoDeFabricacao": yearFabrication.value});
     console.log(data);
     sendData.send(data);
+    location.href = "http://localhost:8080";
 
 }
+
+
+//https://www.sitepoint.com/get-url-parameters-with-javascript/ - Link para ver sobre parametro de url
+// pop up
 
 
