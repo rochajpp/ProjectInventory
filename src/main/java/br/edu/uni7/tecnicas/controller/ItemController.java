@@ -2,6 +2,7 @@ package br.edu.uni7.tecnicas.controller;
 
 import br.edu.uni7.tecnicas.entities.Item;
 import br.edu.uni7.tecnicas.repository.ItemRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+
+import static org.hsqldb.Tokens.T;
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Controller
 public class ItemController {
@@ -42,14 +46,11 @@ public class ItemController {
         List<Item> itens = (List<Item>) repository.findAll();
         return new ResponseEntity<List<Item>>(itens, HttpStatus.OK);
     }
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    @ResponseBody
-    public ResponseEntity<Item> atualizarItem(@RequestBody Item item){
-        Optional<Item> itemUpdat = repository.findById(item.getIdentificador());
+    @RequestMapping(value = "/itens", method = RequestMethod.PUT)
+    public Item atualizarItem(@RequestBody Item item){
+        Item itemAtual = repository.findById(item.getIdentificador()).get();
         item.setUltimaAtualizacao(LocalDate.now());
-
-        repository.save(item);
-
-        return new ResponseEntity(HttpStatus.OK);
+        BeanUtils.copyProperties(item, itemAtual);
+        return repository.save(itemAtual);
     }
 }

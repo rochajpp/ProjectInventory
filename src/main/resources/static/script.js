@@ -116,20 +116,21 @@ function sendUpdate(){
 
     var ident = urlParams.get('id');
     ident = ident - 1263292;
-    var mode = document.querySelector('#modeloInput');
-    var fabr = document.querySelector('#fabricanteInput');
-    var anoFab = document.querySelector('#anoDeFabricacaoInput');
+    var mode = document.querySelector('#modeloInput').value;
+    var fabr = document.querySelector('#fabricanteInput').value;
+    var anoFab = document.querySelector('#anoDeFabricacaoInput').value;
 
 
 
     let sendData = new XMLHttpRequest();
 
-    sendData.open("PUT", "update", true);
+    sendData.open("PUT", "itens", true);
     sendData.setRequestHeader("Content-type", "application/json");
 
     var data = JSON.stringify({"identificador": ident, "modelo": mode, "fabricante": fabr, "anoDeFabricacao": anoFab});
+    console.log(data);
     sendData.send(data);
-    location.href= "http://localhost:8080";
+//    location.href= "http://localhost:8080";
 
 }
 
