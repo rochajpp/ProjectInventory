@@ -41,6 +41,9 @@ function alterarItem(){
 
 }
 function criaLinha(item){
+
+
+
     botoes = document.createElement("div");
     botoes.classList.add("buttons");
     botao = document.createElement("button");
@@ -54,16 +57,25 @@ function criaLinha(item){
     var fabricante = item.fabricante;
     var adfab = item.anoDeFabricacao;
     var ddInc = item.dataDeInclusao;
+    var func;
+    if(item.funcionario != null){
+        func = item.funcionario;
+    }else{
+        func  = "Vazio";
+    }
     botao2.onclick = function(){location.href="http://localhost:8080/alterar_item.html?id=" + ident + "&mod=" + model + "&fab=" + fabricante + "&afab=" + adfab + "&di=" + ddInc};
     botoes.appendChild(botao2);
     botoes.appendChild(botao);
     linha = document.createElement("tr");
+
     tdIdentificador = document.createElement("td");
     tdModelo = document.createElement("td");
     tdFabricante = document.createElement("td");
     tdAnoDeFabricacao = document.createElement("td");
     tdDataDeInclusao = document.createElement("td");
     tdUltimaAtualizacao = document.createElement("td");
+    tdFuncionario = document.createElement('td')
+
 
     tdIdentificador.innerHTML = item.identificador;
     tdModelo.innerHTML = item.modelo;
@@ -71,6 +83,7 @@ function criaLinha(item){
     tdAnoDeFabricacao.innerHTML = item.anoDeFabricacao;
     tdDataDeInclusao.innerHTML = item.dataDeInclusao;
     tdUltimaAtualizacao.innerHTML = item.ultimaAtualizacao;
+    tdFuncionario.innerHTML = func;
 
     linha.appendChild(tdIdentificador);
     linha.appendChild(tdModelo);
@@ -78,6 +91,7 @@ function criaLinha(item){
     linha.appendChild(tdAnoDeFabricacao);
     linha.appendChild(tdDataDeInclusao);
     linha.appendChild(tdUltimaAtualizacao);
+    linha.appendChild(tdFuncionario);
     linha.appendChild(botoes);
 
 
@@ -113,7 +127,7 @@ function sendData(){
 function sendUpdate(){
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-
+    var di = urlParams.get('di')
     var ident = urlParams.get('id');
     ident = ident - 1263292;
     var mode = document.querySelector('#modeloInput').value;
@@ -127,10 +141,10 @@ function sendUpdate(){
     sendData.open("PUT", "itens", true);
     sendData.setRequestHeader("Content-type", "application/json");
 
-    var data = JSON.stringify({"identificador": ident, "modelo": mode, "fabricante": fabr, "anoDeFabricacao": anoFab});
+    var data = JSON.stringify({"identificador": ident, "modelo": mode, "fabricante": fabr, "anoDeFabricacao": anoFab,"dataDeInclusao": di});
     console.log(data);
     sendData.send(data);
-//    location.href= "http://localhost:8080";
+    location.href= "http://localhost:8080";
 
 }
 

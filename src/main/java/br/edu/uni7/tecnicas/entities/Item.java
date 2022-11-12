@@ -78,6 +78,13 @@ public class Item {
     public void setUltimaAtualizacao(LocalDate ultimaAtualizacao) {
         this.ultimaAtualizacao = ultimaAtualizacao;
     }
+    public Funcionario getFuncionario(){
+        return this.funcionario;
+    }
+    public void setFuncionario(Funcionario funcionario){
+        this.funcionario = funcionario;
+    }
+
 
     @Override
     public String toString() {
