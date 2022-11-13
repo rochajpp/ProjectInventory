@@ -2,6 +2,7 @@ package br.edu.uni7.tecnicas.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ public class Funcionario {
     @Id
     private Integer matricula;
     private String nome;
+    @OneToMany
     List<Item> itens = new ArrayList<Item>();
 
     public Integer gerarNovaMatricula(){

@@ -47,10 +47,12 @@ public class ItemController {
         return new ResponseEntity<List<Item>>(itens, HttpStatus.OK);
     }
     @RequestMapping(value = "/itens", method = RequestMethod.PUT)
+    @ResponseBody
     public Item atualizarItem(@RequestBody Item item){
         Item itemAtual = repository.findById(item.getIdentificador()).get();
         item.setUltimaAtualizacao(LocalDate.now());
         BeanUtils.copyProperties(item, itemAtual);
         return repository.save(itemAtual);
     }
+
 }
