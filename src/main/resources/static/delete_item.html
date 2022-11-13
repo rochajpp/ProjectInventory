@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet", type="text/css" href="styleIndex.css">
+    <script src="script.js"></script>
+    <title>Deletar item</title>
+</head>
+<body onload = "alterarItem()">
+<div class="contentBody">
+    <div class="box">
+        <form style="height: 35rem;">
+            <h1>Item</h1>
+            <h2>Você tem certeza que deseja apagar este item?</h2>
+            <label id="identificador" name="identificador">Identificador</label>
+            <input id="identificadorInput" for="identificador"  disabled >
+            <label id="modelo" name="modelo">Modelo</label>
+            <input id="modeloInput" for="modelo" disabled>
+            <label id="fabricante" name="fabricante">Fabricante</label>
+            <input id="fabricanteInput" for="fabricante" disabled>
+            <label id="anoDeFabricacao" name="anoDeFabricante">Ano de Fabricação</label>
+            <input id="anoDeFabricacaoInput" for="anoDeFabricacao" disabled>
+            <label id="dataDeInclusao" name="dataDeInclusao">Data de inclusão</label>
+            <input id="dataDeInclusaoInput" for="dataDeInclusao" disabled>
+            <div class="buttons">
+                <button class="button" type="button" onclick="sendUpdate()">Confirmar</button>
+                <button class="button" type="button" onclick="location.href='http://localhost:8080'">Voltar</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

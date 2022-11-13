@@ -54,5 +54,10 @@ public class ItemController {
         BeanUtils.copyProperties(item, itemAtual);
         return repository.save(itemAtual);
     }
-
+    @RequestMapping(value = "/itens", method = RequestMethod.DELETE)
+    @ResponseBody
+    public ResponseEntity deleteItem(@RequestBody Integer id){
+        repository.deleteById(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

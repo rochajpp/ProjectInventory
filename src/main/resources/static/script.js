@@ -37,8 +37,6 @@ function alterarItem(){
     anoDeFab.value = array[3];
     dataInc.value = array[4];
 
-
-
 }
 function criaLinha(item){
 
@@ -63,6 +61,7 @@ function criaLinha(item){
     }else{
         func  = "Vazio";
     }
+    botao.onclick = function(){location.href="http://localhost:8080/delete_item.html"}
     botao2.onclick = function(){location.href="http://localhost:8080/alterar_item.html?id=" + ident + "&mod=" + model + "&fab=" + fabricante + "&afab=" + adfab + "&di=" + ddInc};
     botoes.appendChild(botao2);
     botoes.appendChild(botao);
@@ -147,6 +146,8 @@ function sendUpdate(){
     location.href= "http://localhost:8080";
 
 }
+
+
 
 
 //https://www.sitepoint.com/get-url-parameters-with-javascript/ - Link para ver sobre parametro de url
