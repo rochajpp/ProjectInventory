@@ -61,7 +61,7 @@ function criaLinha(item){
     }else{
         func  = "Vazio";
     }
-    botao.onclick = function(){location.href="http://localhost:8080/delete_item.html"}
+    botao.onclick = function(){location.href="http://localhost:8080/delete_item.html?id=" + ident + "&mod=" + model + "&fab=" + fabricante + "&afab=" + adfab + "&di=" + ddInc}
     botao2.onclick = function(){location.href="http://localhost:8080/alterar_item.html?id=" + ident + "&mod=" + model + "&fab=" + fabricante + "&afab=" + adfab + "&di=" + ddInc};
     botoes.appendChild(botao2);
     botoes.appendChild(botao);
@@ -146,7 +146,27 @@ function sendUpdate(){
     location.href= "http://localhost:8080";
 
 }
+function deleteItem(){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    var di = urlParams.get('di')
+    var ident = urlParams.get('id');
+    ident = ident - 1263292;
+    var mode = document.querySelector('#modeloInput').value;
+    var fabr = document.querySelector('#fabricanteInput').value;
+    var anoFab = document.querySelector('#anoDeFabricacaoInput').value;
 
+    let sendData = new XMLHttpRequest();
+
+    sendData.open("DELETE", "itens", true);
+    sendData.setRequestHeader("Content-type", "application/json");
+
+    var data = JSON.stringify({"identificador": ident, "modelo": mode, "fabricante": fabr, "anoDeFabricacao": anoFab,"dataDeInclusao": di});
+    console.log(data);
+    sendData.send(data);
+    location.href= "http://localhost:8080";
+
+}
 
 
 

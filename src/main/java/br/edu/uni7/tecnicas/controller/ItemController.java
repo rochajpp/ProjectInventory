@@ -56,8 +56,8 @@ public class ItemController {
     }
     @RequestMapping(value = "/itens", method = RequestMethod.DELETE)
     @ResponseBody
-    public ResponseEntity deleteItem(@RequestBody Integer id){
-        repository.deleteById(id);
+    public ResponseEntity deleteItem(@RequestBody Item item){
+        repository.delete(item);
         return new ResponseEntity(HttpStatus.OK);
     }
 }
