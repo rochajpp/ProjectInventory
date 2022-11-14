@@ -40,8 +40,6 @@ function alterarItem(){
 }
 function criaLinha(item){
 
-
-
     botoes = document.createElement("div");
     botoes.classList.add("buttons");
     botao = document.createElement("button");
@@ -59,7 +57,10 @@ function criaLinha(item){
     if(item.funcionario != null){
         func = item.funcionario;
     }else{
-        func  = "Vazio";
+        func  = document.createElement("button");
+        func.classList.add("button")
+        func.textContent = "Add Funcionário";
+        func.onclick = function(){location.href="http://localhost:8080/add_funcionario.html?id=" + ident + "&mod=" + model + "&fab=" + fabricante + "&afab=" + adfab + "&di=" + ddInc};
     }
     botao.onclick = function(){location.href="http://localhost:8080/delete_item.html?id=" + ident + "&mod=" + model + "&fab=" + fabricante + "&afab=" + adfab + "&di=" + ddInc}
     botao2.onclick = function(){location.href="http://localhost:8080/alterar_item.html?id=" + ident + "&mod=" + model + "&fab=" + fabricante + "&afab=" + adfab + "&di=" + ddInc};
