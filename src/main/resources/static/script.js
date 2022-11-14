@@ -53,14 +53,19 @@ function criaLinha(item){
     var fabricante = item.fabricante;
     var adfab = item.anoDeFabricacao;
     var ddInc = item.dataDeInclusao;
-    var func;
+
+
+    tdFuncionario = document.createElement("td");
+
     if(item.funcionario != null){
-        func = item.funcionario;
+
+        tdFuncionario.innerHTML = item.funcionario.getMatricula();
     }else{
-        func  = document.createElement("button");
-        func.classList.add("button")
-        func.textContent = "Add Funcionário";
-        func.onclick = function(){location.href="http://localhost:8080/add_funcionario.html?id=" + ident + "&mod=" + model + "&fab=" + fabricante + "&afab=" + adfab + "&di=" + ddInc};
+        buttonFuncionario = document.createElement("button");
+        buttonFuncionario.classList.add("button");
+        buttonFuncionario.textContent = "Add Funcionário";
+        tdFuncionario.onclick = function(){location.href="http://localhost:8080/funcionario_item.html?id=" + ident + "&mod=" + model + "&fab=" + fabricante + "&afab=" + adfab + "&di=" + ddInc};
+        tdFuncionario.appendChild(buttonFuncionario);
     }
     botao.onclick = function(){location.href="http://localhost:8080/delete_item.html?id=" + ident + "&mod=" + model + "&fab=" + fabricante + "&afab=" + adfab + "&di=" + ddInc}
     botao2.onclick = function(){location.href="http://localhost:8080/alterar_item.html?id=" + ident + "&mod=" + model + "&fab=" + fabricante + "&afab=" + adfab + "&di=" + ddInc};
@@ -74,7 +79,7 @@ function criaLinha(item){
     tdAnoDeFabricacao = document.createElement("td");
     tdDataDeInclusao = document.createElement("td");
     tdUltimaAtualizacao = document.createElement("td");
-    tdFuncionario = document.createElement('td')
+
 
 
     tdIdentificador.innerHTML = item.identificador;
@@ -83,7 +88,7 @@ function criaLinha(item){
     tdAnoDeFabricacao.innerHTML = item.anoDeFabricacao;
     tdDataDeInclusao.innerHTML = item.dataDeInclusao;
     tdUltimaAtualizacao.innerHTML = item.ultimaAtualizacao;
-    tdFuncionario.innerHTML = func;
+
 
     linha.appendChild(tdIdentificador);
     linha.appendChild(tdModelo);
@@ -169,9 +174,20 @@ function deleteItem(){
 
 }
 
+function sendDataFunc(){
 
+    var nome = document.querySelector('#nome').value;
 
-//https://www.sitepoint.com/get-url-parameters-with-javascript/ - Link para ver sobre parametro de url
-// pop up
+    let sendData = new XMLHttpRequest();
 
+    sendData.open("POST", "funcionarios", true);
+    sendData.setRequestHeader("Content-type", "application/json");
 
+    var data = JSON.stringify({"nome": nome});
+    sendData.send(data);
+    location.href = "http://localhost:8080";
+}
+
+function itemFunc(){
+
+}

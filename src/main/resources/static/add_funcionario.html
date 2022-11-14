@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Adicionar funcionário</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Novo funcionário</title>
 </head>
 <body>
-
+    <div class="contentBody">
+        <form>
+            <h1>Novo funcionário</h1>
+            <label id="name" name="name">Nome</label>
+            <input id="nome" for="name" placeholder="Digite o nome do funcionário" required>
+            <button class="button" type="button" onclick="sendDataFunc()">Adicionar</button>
+            <button class="button" type="button" onclick="location.href='http://localhost:8080'">Voltar</button>
+        </form>
+    </div>
 </body>
 </html>

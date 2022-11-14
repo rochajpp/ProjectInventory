@@ -1,5 +1,6 @@
 package br.edu.uni7.tecnicas.controller;
 
+import br.edu.uni7.tecnicas.entities.Funcionario;
 import br.edu.uni7.tecnicas.entities.Item;
 import br.edu.uni7.tecnicas.repository.FuncionarioRepository;
 import br.edu.uni7.tecnicas.repository.ItemRepository;
@@ -16,7 +17,7 @@ import java.util.List;
 @Controller
 public class InventoryController {
     @Autowired
-    private ItemRepository Itemrepository;
+    private ItemRepository itemRepository;
     @Autowired
     private FuncionarioRepository funcionarioRepository;
 
@@ -26,14 +27,14 @@ public class InventoryController {
         if(item != null) {
             while (true) {
                 Integer identificador = item.gerarNovoIdentificador();
-                if (!Itemrepository.existsById(identificador)) {
+                if (!itemRepository.existsById(identificador)) {
                     item.setIdentificador(identificador);
                     break;
                 }
             }
             item.setDataDeInclusao(LocalDate.now());
             item.setUltimaAtualizacao(LocalDate.now());
-            Itemrepository.save(item);
+            itemRepository.save(item);
             return new ResponseEntity(HttpStatus.CREATED);
         }else{
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
@@ -42,21 +43,46 @@ public class InventoryController {
     @RequestMapping(value = "/itens", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Item>>listItems(){
-        List<Item> itens = (List<Item>) Itemrepository.findAll();
+        List<Item> itens = (List<Item>) itemRepository.findAll();
         return new ResponseEntity<List<Item>>(itens, HttpStatus.OK);
     }
     @RequestMapping(value = "/itens", method = RequestMethod.PUT)
     @ResponseBody
     public Item atualizarItem(@RequestBody Item item){
-        Item itemAtual = Itemrepository.findById(item.getIdentificador()).get();
+        Item itemAtual = itemRepository.findById(item.getIdentificador()).get();
         item.setUltimaAtualizacao(LocalDate.now());
         BeanUtils.copyProperties(item, itemAtual);
-        return Itemrepository.save(itemAtual);
+        return itemRepository.save(itemAtual);
     }
     @RequestMapping(value = "/itens", method = RequestMethod.DELETE)
     @ResponseBody
     public ResponseEntity deleteItem(@RequestBody Item item){
-        Itemrepository.delete(item);
+        itemRepository.delete(item);
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+
+    @RequestMapping(value = "/funcionarios", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Funcionario>> listFuncionarios(){
+        List<Funcionario> funcionarios = (List<Funcionario>) funcionarioRepository.findAll();
+        return new ResponseEntity<List<Funcionario>>(funcionarios, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/funcionarios", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity addFuncionario(@RequestBody Funcionario funcionario){
+
+        Integer matricula;
+
+        while(true) {
+            matricula = funcionario.gerarNovaMatricula();
+            if(!funcionarioRepository.existsById(matricula)){
+               break;
+            }
+        }
+        funcionario.setMatricula(matricula);
+        funcionarioRepository.save(funcionario);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 }

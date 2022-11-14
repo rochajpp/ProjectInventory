@@ -15,11 +15,7 @@ public class Funcionario {
     List<Item> itens = new ArrayList<Item>();
 
     public Integer gerarNovaMatricula(){
-        Integer novaMatricula = 0;
-        for(int i = 0; i < 10; i++) {
-            novaMatricula =+ (int)Math.floor(Math.random() * 10);
-        }
-        return novaMatricula;
+        return (int)Math.floor(Math.random() * (999 - 100) + 100);
     }
 
 
