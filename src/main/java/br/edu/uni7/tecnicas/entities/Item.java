@@ -20,7 +20,7 @@ public class Item {
     private Integer anoDeFabricacao;
     private LocalDate ultimaAtualizacao;
     @ManyToOne
-    private Funcionario funcionario = null;
+    private Funcionario funcionario;
 
 
 

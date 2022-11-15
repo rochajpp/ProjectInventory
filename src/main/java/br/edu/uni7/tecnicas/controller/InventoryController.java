@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Controller
+@RestController
 public class InventoryController {
     @Autowired
     private ItemRepository itemRepository;
@@ -69,6 +69,13 @@ public class InventoryController {
         return new ResponseEntity<List<Funcionario>>(funcionarios, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/listItens", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Item>> listItensFuncionarios(@RequestBody Funcionario funcionario){
+        List<Item> itensFunc = funcionario.getItens();
+        return new ResponseEntity<List<Item>>(itensFunc, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/funcionarios", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity addFuncionario(@RequestBody Funcionario funcionario){
@@ -84,5 +91,39 @@ public class InventoryController {
         funcionario.setMatricula(matricula);
         funcionarioRepository.save(funcionario);
         return new ResponseEntity(HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/updateItemFunc", method = RequestMethod.PUT)
+    @ResponseBody
+    public ResponseEntity emprestarItem(@RequestBody Item item){
+        if(funcionarioRepository.existsById(item.getFuncionario().getMatricula())) {
+            Item itemAddFuncionario = itemRepository.findById(item.getIdentificador()).get();
+            Funcionario funcionarioItem = funcionarioRepository.findById(item.getFuncionario().getMatricula()).get();
+            Funcionario funcionario = item.getFuncionario();
+
+
+            item.setUltimaAtualizacao(LocalDate.now());
+
+            funcionario.addItem(itemAddFuncionario);
+            funcionario.setNome(funcionarioItem.getNome());
+
+
+            BeanUtils.copyProperties(item, itemAddFuncionario);
+            BeanUtils.copyProperties(funcionario, funcionarioItem);
+
+
+            itemRepository.save(itemAddFuncionario);
+            funcionarioRepository.save(funcionarioItem);
+
+
+
+
+
+
+
+            return new ResponseEntity(HttpStatus.OK);
+        }else{
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
     }
 }

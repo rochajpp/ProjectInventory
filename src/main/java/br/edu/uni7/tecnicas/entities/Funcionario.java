@@ -31,6 +31,18 @@ public class Funcionario {
     public void setNome(String nome){
         this.nome = nome;
     }
+    public void addItem(Item item){
+        itens.add(item);
+    }
+
+    public List<Item> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
+    }
+
 
     @Override
     public String toString() {

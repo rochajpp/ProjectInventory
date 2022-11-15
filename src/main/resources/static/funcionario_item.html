@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="script"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>Adicionar funcionario</title>
 </head>
 <body onload="itemFunc()">
@@ -17,7 +18,7 @@
         <input for="modelo" id="model" disabled>
         <label id="funcionario" name="funcionario">Funcionário</label>
         <input for="funcionario" id="func">
-        <button class="button" type="button" onclick="">Confirmar</button>
+        <button class="button" type="button" onclick="sendItemFunc()">Confirmar</button>
         <button class="button" type="button" onclick="location.href='http://localhost:8080'">Voltar</button>
     </form>
   </div>

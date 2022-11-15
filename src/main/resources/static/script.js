@@ -58,8 +58,7 @@ function criaLinha(item){
     tdFuncionario = document.createElement("td");
 
     if(item.funcionario != null){
-
-        tdFuncionario.innerHTML = item.funcionario.getMatricula();
+        tdFuncionario.innerHTML = item.funcionario.matricula;
     }else{
         buttonFuncionario = document.createElement("button");
         buttonFuncionario.classList.add("button");
@@ -189,5 +188,44 @@ function sendDataFunc(){
 }
 
 function itemFunc(){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
 
+    var idItem = urlParams.get('id');
+    idItem = idItem - 1263292;
+    var modeloItem = urlParams.get('mod');
+    var fabricanteItem = urlParams.get('fab');
+    var anoFabItem = urlParams.get('afab');
+    var dataIncItem = urlParams.get('di');
+
+    let inputId = document.getElementById('ident');
+    let inputModelo = document.getElementById('model');
+
+    inputId.value = idItem;
+    inputModelo.value = modeloItem;
+
+
+}
+
+function sendItemFunc(){
+     const queryString = window.location.search;
+     const urlParams = new URLSearchParams(queryString);
+
+     var idItem = urlParams.get('id');
+     idItem = idItem - 1263292;
+     var modeloItem = urlParams.get('mod');
+     var fabricanteItem = urlParams.get('fab');
+     var anoFabItem = urlParams.get('afab');
+     var dataIncItem = urlParams.get('di');
+
+     let matricula = document.querySelector('#func').value;
+
+     let sendData = new XMLHttpRequest();
+
+     sendData.open("PUT", "updateItemFunc", true);
+     sendData.setRequestHeader("Content-type", "application/json");
+
+    var data = JSON.stringify({"identificador": idItem, "modelo": modeloItem, "fabricante": fabricanteItem, "anoDeFabricacao": anoFabItem,"dataDeInclusao": dataIncItem, "funcionario": {"matricula": matricula}});
+    console.log(data)
+    sendData.send(data);
 }
