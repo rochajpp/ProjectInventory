@@ -49,9 +49,11 @@ public class InventoryController {
     @RequestMapping(value = "/itens", method = RequestMethod.PUT)
     @ResponseBody
     public Item atualizarItem(@RequestBody Item item){
+
         Item itemAtual = itemRepository.findById(item.getIdentificador()).get();
+
         item.setUltimaAtualizacao(LocalDate.now());
-        BeanUtils.copyProperties(item, itemAtual);
+        BeanUtils.copyProperties(item, itemAtual, "funcionario");
         return itemRepository.save(itemAtual);
     }
     @RequestMapping(value = "/itens", method = RequestMethod.DELETE)
@@ -96,17 +98,20 @@ public class InventoryController {
     @RequestMapping(value = "/updateItemFunc", method = RequestMethod.PUT)
     @ResponseBody
     public ResponseEntity emprestarItem(@RequestBody Item item){
-        if(funcionarioRepository.existsById(item.getFuncionario().getMatricula())) {
+
+        Integer matricula = Integer.parseInt(item.getFuncionario());
+
+        if(funcionarioRepository.existsById(matricula)) {
             Item itemAddFuncionario = itemRepository.findById(item.getIdentificador()).get();
-            Funcionario funcionarioItem = funcionarioRepository.findById(item.getFuncionario().getMatricula()).get();
-            Funcionario funcionario = item.getFuncionario();
+            Funcionario funcionarioItem = funcionarioRepository.findById(matricula).get();
+            Funcionario funcionario = funcionarioRepository.findById(matricula).get();
 
 
             item.setUltimaAtualizacao(LocalDate.now());
 
             funcionario.addItem(itemAddFuncionario);
             funcionario.setNome(funcionarioItem.getNome());
-
+            item.setFuncionario(matricula + " - " + funcionarioItem.getNome());
 
             BeanUtils.copyProperties(item, itemAddFuncionario);
             BeanUtils.copyProperties(funcionario, funcionarioItem);

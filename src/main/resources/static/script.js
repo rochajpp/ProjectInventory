@@ -58,7 +58,7 @@ function criaLinha(item){
     tdFuncionario = document.createElement("td");
 
     if(item.funcionario != null){
-        tdFuncionario.innerHTML = item.funcionario.matricula;
+        tdFuncionario.innerHTML = item.funcionario;
     }else{
         buttonFuncionario = document.createElement("button");
         buttonFuncionario.classList.add("button");
@@ -225,7 +225,7 @@ function sendItemFunc(){
      sendData.open("PUT", "updateItemFunc", true);
      sendData.setRequestHeader("Content-type", "application/json");
 
-    var data = JSON.stringify({"identificador": idItem, "modelo": modeloItem, "fabricante": fabricanteItem, "anoDeFabricacao": anoFabItem,"dataDeInclusao": dataIncItem, "funcionario": {"matricula": matricula}});
+    var data = JSON.stringify({"identificador": idItem, "modelo": modeloItem, "fabricante": fabricanteItem, "anoDeFabricacao": anoFabItem,"dataDeInclusao": dataIncItem, "funcionario": matricula});
     console.log(data)
     sendData.send(data);
 }

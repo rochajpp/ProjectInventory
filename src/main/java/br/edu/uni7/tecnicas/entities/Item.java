@@ -19,8 +19,7 @@ public class Item {
     private String modelo;
     private Integer anoDeFabricacao;
     private LocalDate ultimaAtualizacao;
-    @ManyToOne
-    private Funcionario funcionario;
+    private String funcionario;
 
 
 
@@ -78,10 +77,10 @@ public class Item {
     public void setUltimaAtualizacao(LocalDate ultimaAtualizacao) {
         this.ultimaAtualizacao = ultimaAtualizacao;
     }
-    public Funcionario getFuncionario(){
+    public String getFuncionario(){
         return this.funcionario;
     }
-    public void setFuncionario(Funcionario funcionario){
+    public void setFuncionario(String funcionario){
         this.funcionario = funcionario;
     }
 
