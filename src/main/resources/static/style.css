@@ -118,8 +118,13 @@ thead tr td{
     display: flex;
     flex-direction: column;
 }
-.bodyFunc td{
+.func{
     border: 1px solid black;
-    height: 4rem;
-    width: 80vw;
+    height: 5rem;
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40rem;
+    align-items: center;
 }

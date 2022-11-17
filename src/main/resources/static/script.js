@@ -1,13 +1,15 @@
 const url = 'http://localhost:8080';
 const itemEndpoint = url + '/itens';
 
-//Pegando dados de itens
+//Pegando dados de url
 function fazGet(url){
     let request = new XMLHttpRequest();
     request.open("GET", url, false);
     request.send();
     return request.responseText;
 }
+
+
 //Pegando parámetros da url em alterar_item.html
 function getData(){
     const queryString = window.location.search;
@@ -245,4 +247,70 @@ function sendItemFunc(){
     var data = JSON.stringify({"identificador": idItem, "modelo": modeloItem, "fabricante": fabricanteItem, "anoDeFabricacao": anoFabItem,"dataDeInclusao": dataIncItem, "funcionario": matricula});
     sendData.send(data);
     location.href = url;
+}
+
+//Main gerenciamento de funcionários
+function funcionariosMain(){
+    let data = fazGet("/funcionarios");
+    let funcionarios = JSON.parse(data);
+    let tabela = document.getElementById('bodyFunc');
+    funcionarios.forEach(element => {
+        let linha = criaLinhaFuncionario(element);
+        tabela.appendChild(linha);
+    })
+}
+
+function criaLinhaFuncionario(funcionario){
+
+    //Atributos de funcionários
+    var matricula = funcionario.matricula;
+    var nome = funcionario.nome;
+    var itensList = funcionario.itens;
+
+
+    let funcionarioArea = document.createElement("div");
+    funcionarioArea.classList.add("func");
+
+    let infoFunc = document.createElement("h2");
+    infoFunc.textContent = funcionario.matricula + " - " + funcionario.nome;
+
+    let partButton = document.createElement("div");
+    partButton.classList.add("buttons");
+    let itens = document.createElement("button");
+    itens.classList.add("button");
+    itens.textContent = "Itens";
+    itens.onclick = function(){location.href="http://localhost:8080/item_funcionario.html?matricula=" + matricula}
+
+    let editar = document.createElement("button");
+    editar.classList.add("button");
+    editar.textContent = "Editar";
+
+    let apagar = document.createElement("button");
+    apagar.classList.add("button");
+    apagar.textContent = "Apagar";
+
+    partButton.appendChild(itens);
+    partButton.appendChild(editar);
+    partButton.appendChild(apagar);
+
+
+     funcionarioArea.appendChild(infoFunc);
+     funcionarioArea.appendChild(partButton);
+
+    return funcionarioArea;
+}
+
+function mainItensFuncionario(){
+ const queryString = window.location.search;
+ const urlParams = new URLSearchParams(queryString);
+
+ var matricula = urlParams.get(matricula);
+ var data = fazGet("/funcionarios");
+ var funcionarios = JSON.parse(data);
+ var lista;
+
+ funcionarios.forEach(element => {
+    lista = element.itens;
+ })
+ console.log(lista)
 }

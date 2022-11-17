@@ -8,7 +8,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -74,7 +73,7 @@ public class InventoryController {
     @RequestMapping(value = "/listItens", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Item>> listItensFuncionarios(@RequestBody Funcionario funcionario){
-        List<Item> itensFunc = funcionario.getItens();
+        List<Item> itensFunc = funcionarioRepository.findById(funcionario.getMatricula()).get().getItens();
         return new ResponseEntity<List<Item>>(itensFunc, HttpStatus.OK);
     }
 
@@ -125,4 +124,5 @@ public class InventoryController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
+
 }
