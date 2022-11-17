@@ -120,12 +120,6 @@ public class InventoryController {
             itemRepository.save(itemAddFuncionario);
             funcionarioRepository.save(funcionarioItem);
 
-
-
-
-
-
-
             return new ResponseEntity(HttpStatus.OK);
         }else{
             return new ResponseEntity(HttpStatus.NOT_FOUND);

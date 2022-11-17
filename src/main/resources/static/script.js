@@ -1,13 +1,14 @@
 const url = 'http://localhost:8080';
 const itemEndpoint = url + '/itens';
 
+//Pegando dados de itens
 function fazGet(url){
     let request = new XMLHttpRequest();
     request.open("GET", url, false);
     request.send();
     return request.responseText;
 }
-
+//Pegando parámetros da url em alterar_item.html
 function getData(){
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -23,6 +24,7 @@ function getData(){
     return array;
 
 }
+//Carregando dados do item nos campos do formulário
 function alterarItem(){
     const array = getData();
     let id = document.getElementById('identificadorInput');
@@ -38,6 +40,8 @@ function alterarItem(){
     dataInc.value = array[4];
 
 }
+
+//Carregamento de dados e criação de elementos(Criando tabela com dados de itens)
 function criaLinha(item){
 
     botoes = document.createElement("div");
@@ -101,6 +105,8 @@ function criaLinha(item){
 
     return linha;
 }
+
+//Função principal do index
 function main(){
 
     let data = fazGet("/itens");
@@ -113,6 +119,7 @@ function main(){
 
 }
 
+//Enviar dados de Post de item
 function sendData(){
     let model = document.querySelector('#modelo');
     let manufacturer = document.querySelector('#fabricante');
@@ -128,6 +135,8 @@ function sendData(){
     location.href = "http://localhost:8080";
 
 }
+
+//Enviar dados de Put de item
 function sendUpdate(){
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -151,6 +160,7 @@ function sendUpdate(){
     location.href= "http://localhost:8080";
 
 }
+//Delete de item
 function deleteItem(){
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -172,7 +182,7 @@ function deleteItem(){
     location.href= "http://localhost:8080";
 
 }
-
+//Criação de funcionário
 function sendDataFunc(){
 
     var nome = document.querySelector('#nome').value;
@@ -187,6 +197,13 @@ function sendDataFunc(){
     location.href = "http://localhost:8080";
 }
 
+
+
+
+
+
+
+//Pegando parámetros da url funcionario_item.html e adicionando nos campos do formulário
 function itemFunc(){
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -206,7 +223,7 @@ function itemFunc(){
 
 
 }
-
+//Enviando dados de atribuição de funcionário ao item
 function sendItemFunc(){
      const queryString = window.location.search;
      const urlParams = new URLSearchParams(queryString);
@@ -226,6 +243,6 @@ function sendItemFunc(){
      sendData.setRequestHeader("Content-type", "application/json");
 
     var data = JSON.stringify({"identificador": idItem, "modelo": modeloItem, "fabricante": fabricanteItem, "anoDeFabricacao": anoFabItem,"dataDeInclusao": dataIncItem, "funcionario": matricula});
-    console.log(data)
     sendData.send(data);
+    location.href = url;
 }
