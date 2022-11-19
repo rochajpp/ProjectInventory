@@ -123,15 +123,19 @@ function main(){
 
 //Enviar dados de Post de item
 function sendData(){
-    let model = document.querySelector('#modelo');
-    let manufacturer = document.querySelector('#fabricante');
-    let yearFabrication = document.querySelector('#anoDeFabricacao');
+    let model = document.querySelector('#modelo').value;
+    let manufacturer = document.querySelector('#fabricante').value;
+    let yearFabrication = document.querySelector('#anoDeFabricacao').value;
+
+    modelo = model.trim()
+    manufacturer = manufacturer.trim();
+    yearFabrication = yearFabrication.trim();
 
     let sendData = new XMLHttpRequest();
 
     sendData.open("POST", "itens", true);
     sendData.setRequestHeader("Content-type", "application/json");
-    var data = JSON.stringify({"modelo": model.value, "fabricante": manufacturer.value, "anoDeFabricacao": yearFabrication.value});
+    var data = JSON.stringify({"modelo": model, "fabricante": manufacturer, "anoDeFabricacao": yearFabrication});
     console.log(data);
     sendData.send(data);
     location.href = "http://localhost:8080";
@@ -149,7 +153,9 @@ function sendUpdate(){
     var fabr = document.querySelector('#fabricanteInput').value;
     var anoFab = document.querySelector('#anoDeFabricacaoInput').value;
 
-
+    mode = mode.trim();
+    fabr = fabr.trim();
+    anoFab = anoFab.trim();
 
     let sendData = new XMLHttpRequest();
 
@@ -188,7 +194,7 @@ function deleteItem(){
 function sendDataFunc(){
 
     var nome = document.querySelector('#nome').value;
-
+    nome = nome.trim()
     let sendData = new XMLHttpRequest();
 
     sendData.open("POST", "funcionarios", true);
@@ -301,16 +307,20 @@ function criaLinhaFuncionario(funcionario){
 }
 
 function mainItensFuncionario(){
- const queryString = window.location.search;
- const urlParams = new URLSearchParams(queryString);
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
 
- var matricula = urlParams.get(matricula);
- var data = fazGet("/funcionarios");
- var funcionarios = JSON.parse(data);
- var lista;
+    var matricula = urlParams.get('matricula');
+    var data = fazGet("/funcionarios");
+    var funcionarios = JSON.parse(data);
+    var lista;
 
- funcionarios.forEach(element => {
-    lista = element.itens;
- })
- console.log(lista)
+    funcionarios.forEach(element => {
+        if(element.matricula == matricula){
+            lista = element.itens;
+        }
+    })
+    lista.forEach(element => {
+
+    })
 }

@@ -23,7 +23,7 @@ public class InventoryController {
     @RequestMapping(value = "/itens", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity addItem(@RequestBody Item item){
-        if(item != null) {
+        if(item.getFabricante() != "" && item.getModelo() != "" && item.getAnoDeFabricacao() != null) {
             while (true) {
                 Integer identificador = item.gerarNovoIdentificador();
                 if (!itemRepository.existsById(identificador)) {
@@ -47,13 +47,18 @@ public class InventoryController {
     }
     @RequestMapping(value = "/itens", method = RequestMethod.PUT)
     @ResponseBody
-    public Item atualizarItem(@RequestBody Item item){
+    public ResponseEntity atualizarItem(@RequestBody Item item){
 
         Item itemAtual = itemRepository.findById(item.getIdentificador()).get();
 
-        item.setUltimaAtualizacao(LocalDate.now());
-        BeanUtils.copyProperties(item, itemAtual, "funcionario");
-        return itemRepository.save(itemAtual);
+        if(item.getModelo() != itemAtual.getModelo() || item.getFabricante() != itemAtual.getFabricante() || item.getAnoDeFabricacao() != itemAtual.getAnoDeFabricacao()) {
+            item.setUltimaAtualizacao(LocalDate.now());
+            BeanUtils.copyProperties(item, itemAtual, "funcionario");
+            itemRepository.save(itemAtual);
+            return new ResponseEntity(HttpStatus.OK);
+        }else{
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
     }
     @RequestMapping(value = "/itens", method = RequestMethod.DELETE)
     @ResponseBody
@@ -80,18 +85,21 @@ public class InventoryController {
     @RequestMapping(value = "/funcionarios", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity addFuncionario(@RequestBody Funcionario funcionario){
+        if(funcionario.getNome() != "") {
+            Integer matricula;
 
-        Integer matricula;
-
-        while(true) {
-            matricula = funcionario.gerarNovaMatricula();
-            if(!funcionarioRepository.existsById(matricula)){
-               break;
+            while (true) {
+                matricula = funcionario.gerarNovaMatricula();
+                if (!funcionarioRepository.existsById(matricula)) {
+                    break;
+                }
             }
+            funcionario.setMatricula(matricula);
+            funcionarioRepository.save(funcionario);
+            return new ResponseEntity(HttpStatus.CREATED);
+        }else{
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
-        funcionario.setMatricula(matricula);
-        funcionarioRepository.save(funcionario);
-        return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/updateItemFunc", method = RequestMethod.PUT)
