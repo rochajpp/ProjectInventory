@@ -330,7 +330,7 @@ function mainItensFuncionario(){
 
         button.classList.add("button");
         button.textContent = "Remover";
-        button.onclick = function(){location.href="http://localhost:8080/"};
+        button.onclick = function(){location.href="http://localhost:8080/remove_item_func.html?matricula=" + matricula + "&id=" + element.identificador + "&modelo=" + element.modelo + "&fabricante=" + element.fabricante + "&anoDeFabricacao=" + element.anoDeFabricacao + "&dataDeInclusao=" + element.dataDeInclusao + "&ultimaAtualizacao=" + element.ultimaAtualizacao};
 
         identificador.innerHTML = element.identificador;
         modelo.innerHTML = element.modelo;
@@ -351,4 +351,19 @@ function mainItensFuncionario(){
         tabela.appendChild(linha);
 
     })
+}
+
+//Main na página remove_item_func
+function mainRemoveItemFunc(){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+
+
+    document.getElementById('ident').value = urlParams.get('id');
+    document.getElementById('model').value = urlParams.get('modelo');
+    doument.getElementById('fabri').value = urlParams.get('fabricante');
+    document.getElementById('anoDeFab').value = urlParams.get('anoDeFabricacao');
+    document.getElementById('dataDeInc').value = urlParams.get('dataDeInclusao');
+    document.getElementById('ultimaAtual').value = urlParams.get('ultimaAtualizacao');
 }
