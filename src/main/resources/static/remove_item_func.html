@@ -10,7 +10,7 @@
 </head>
 <body onload="mainRemoveItemFunc()">
     <div class="contentBody">
-        <form style="height: 38rem;">
+        <form>
             <h1>Remover item?</h1>
             <label id="identificador" name="identidicador">Identificador</label>
             <input id="ident" for="identificador" disabled>
@@ -20,13 +20,9 @@
             <input id="fabri" for="fabricante" disabled>
             <label id="anoDeFabricacao" name="anoDeFabricacao">Ano de Fabricação</label>
             <input id="anoDeFab" for="anoDeFabricacao" disabled>
-            <label id="dataDeInclusao" name="dataDeInclusao">Data de Inclusão</label>
-            <input id="dataInc" for="dataDeInclusao" disabled>
-            <label id="ultimaAtualizacao" name="ultimaAtualizacao">Última Atualização</label>
-            <input id="ultimaAtual" for="ultimaAtualizacao" disabled>
             <div class="buttons">
-                <button class="button" onclick="removerItemFunc()">Remover</button>
-                <button class="button" onclick="location.href='http://localhost:8080'">Voltar</button>
+                <button type="button" class="button" onclick="removerItemFunc()">Remover</button>
+                <button type="button" id="botao" class="button">Voltar</button>
             </div>
         </form>
     </div>

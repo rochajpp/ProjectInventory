@@ -358,12 +358,33 @@ function mainRemoveItemFunc(){
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
+    let matriculaParam = urlParams.get("matricula");
+    var botaoVoltar = document.getElementById('botao');
+    botaoVoltar.onclick = function(){location.href="http://localhost:8080/item_funcionario.html?matricula=" + matriculaParam};
 
 
     document.getElementById('ident').value = urlParams.get('id');
     document.getElementById('model').value = urlParams.get('modelo');
-    doument.getElementById('fabri').value = urlParams.get('fabricante');
+    document.getElementById('fabri').value = urlParams.get('fabricante');
     document.getElementById('anoDeFab').value = urlParams.get('anoDeFabricacao');
-    document.getElementById('dataDeInc').value = urlParams.get('dataDeInclusao');
-    document.getElementById('ultimaAtual').value = urlParams.get('ultimaAtualizacao');
+}
+
+function removerItemFunc(){
+     const queryString = window.location.search;
+     const urlParams = new URLSearchParams(queryString);
+
+     var identificador = urlParams.get("id");
+     var modelo = urlParams.get("modelo");
+     var fabricante = urlParams.get("fabricante");
+     var anoDeFabricacao = urlParams.get("anoDeFabricacao");
+     var dataDeInclusao = urlParams.get("dataDeInclusao");
+     var matricula = urlParams.get("matricula");
+
+     var sendData = new XMLHttpRequest();
+
+     sendData.open("PUT", "funcionarios", true);
+     sendData.setRequestHeader("Content-type", "application/json");
+
+     var data = JSON.stringify({"identificador": identificador});
+     sendData.send(data);
 }
