@@ -37,7 +37,7 @@ public class Funcionario {
     public void rmItem(Integer identificador){
         for(int i = 0; i < itens.size(); i++){
             if(itens.get(i).getIdentificador() == identificador){
-                itens.remove(itens.get(i));
+                itens.remove(i);
                 break;
             }
         }
