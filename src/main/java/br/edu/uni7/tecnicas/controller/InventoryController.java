@@ -133,4 +133,14 @@ public class InventoryController {
         }
     }
 
+    @RequestMapping(value = "/removeItemFunc", method = RequestMethod.DELETE)
+    @ResponseBody
+    public ResponseEntity removerItemDeFuncionario(@RequestBody Item item){
+        Integer matricula = Integer.parseInt(itemRepository.findById(item.getIdentificador()).get().getFuncionario());
+        Funcionario funcionario = funcionarioRepository.findById(matricula).get();
+        funcionario.rmItem(item.getIdentificador());
+        funcionarioRepository.save(funcionario);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 }

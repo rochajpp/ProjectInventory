@@ -5,49 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="script.js"></script>
     <title>Inventory</title>
 </head>
 <body onload="main()">
-<div class="contentBody">
-    <div class="buttons">
-        <button class="button" type="button" onclick="location.href='http://localhost:8080/item_create.html'">Novo item</button>
-        <button class="button" type="button" onclick="location.href='http://localhost:8080/add_funcionario.html'">Novo funcionário</button>
-        <button class="button" type="button" onclick="location.href='http://localhost:8080/gerenciamentoFuncionario.html'">Gerenciar funcionarios</button>
+    <div class="contentBody">
+        <div class="buttons">
+            <button class="button" type="button" onclick="location.href='http://localhost:8080/item_create.html'">Novo item</button>
+            <button class="button" type="button" onclick="location.href='http://localhost:8080/add_funcionario.html'">Novo funcionário</button>
+            <button class="button" type="button" onclick="location.href='http://localhost:8080/gerenciamentoFuncionario.html'">Gerenciar funcionarios</button>
+        </div>
+        <table class="inventory" border="1">
+            <thead>
+            <tr class="type">
+                <td class="indentificationNumber">
+                    Identificador
+                </td>
+                <td class="model">
+                    Modelo
+                </td>
+                <td class="manufacturer">
+                    Fabricante
+                </td>
+                <td class="yearFabrication">
+                    Ano de fabricação
+                </td>
+                <td class="inclusionDate">
+                    Data de inclusão
+                </td>
+                <td class="lastUpdate">
+                    Última atualização
+                </td>
+                <td class="employee">
+                    Funcionário
+                </td>
+                <td>Interação</td>
+
+            </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+
     </div>
-    <table class="inventory" border="1">
-        <thead>
-        <tr class="type">
-            <td class="indentificationNumber">
-                Identificador
-            </td>
-            <td class="model">
-                Modelo
-            </td>
-            <td class="manufacturer">
-                Fabricante
-            </td>
-            <td class="yearFabrication">
-                Ano de fabricação
-            </td>
-            <td class="inclusionDate">
-                Data de inclusão
-            </td>
-            <td class="lastUpdate">
-                Última atualização
-            </td>
-            <td class="employee">
-                Funcionário
-            </td>
-            <td>Interação</td>
-
-        </tr>
-        </thead>
-        <tbody id="tbody">
-
-        </tbody>
-    </table>
-
-</div>
 </body>
-<script src="script.js"></script>
 </html>

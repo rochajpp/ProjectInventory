@@ -1,5 +1,3 @@
-const url = 'http://localhost:8080';
-const itemEndpoint = url + '/itens';
 
 //Pegando dados de url
 function fazGet(url){
@@ -252,7 +250,7 @@ function sendItemFunc(){
 
     var data = JSON.stringify({"identificador": idItem, "modelo": modeloItem, "fabricante": fabricanteItem, "anoDeFabricacao": anoFabItem,"dataDeInclusao": dataIncItem, "funcionario": matricula});
     sendData.send(data);
-    location.href = url;
+    location.href = "http://localhost:8080";
 }
 
 //Main gerenciamento de funcionários
@@ -314,13 +312,43 @@ function mainItensFuncionario(){
     var data = fazGet("/funcionarios");
     var funcionarios = JSON.parse(data);
     var lista;
-
+    let tabela = document.getElementById("tbody");
     funcionarios.forEach(element => {
         if(element.matricula == matricula){
             lista = element.itens;
         }
     })
     lista.forEach(element => {
+        let linha = document.createElement("tr");
+        let identificador = document.createElement("td");
+        let modelo = document.createElement("td");
+        let fabricante = document.createElement("td");
+        let anoDeFabricacao = document.createElement("td");
+        let dataDeInclusao = document.createElement("td");
+        let ultimaAtualizacao = document.createElement("td");
+        let button = document.createElement("button");
+
+        button.classList.add("button");
+        button.textContent = "Remover";
+        button.onclick = function(){location.href="http://localhost:8080/"};
+
+        identificador.innerHTML = element.identificador;
+        modelo.innerHTML = element.modelo;
+        fabricante.innerHTML = element.fabricante;
+        anoDeFabricacao.innerHTML = element.anoDeFabricacao;
+        dataDeInclusao.innerHTML = element.dataDeInclusao;
+        ultimaAtualizacao.innerHTML = element.ultimaAtualizacao;
+
+        linha.appendChild(identificador);
+        linha.appendChild(modelo);
+        linha.appendChild(fabricante);
+        linha.appendChild(anoDeFabricacao);
+        linha.appendChild(dataDeInclusao);
+        linha.appendChild(ultimaAtualizacao);
+
+        linha.appendChild(button);
+
+        tabela.appendChild(linha);
 
     })
 }

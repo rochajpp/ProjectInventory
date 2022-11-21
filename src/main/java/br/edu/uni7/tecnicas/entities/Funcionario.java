@@ -34,6 +34,15 @@ public class Funcionario {
     public void addItem(Item item){
         itens.add(item);
     }
+    public void rmItem(Integer identificador){
+        for(int i = 0; i < itens.size(); i++){
+            if(itens.get(i).getIdentificador() == identificador){
+                itens.remove(itens.get(i));
+                break;
+            }
+        }
+
+    }
 
     public List<Item> getItens() {
         return itens;
