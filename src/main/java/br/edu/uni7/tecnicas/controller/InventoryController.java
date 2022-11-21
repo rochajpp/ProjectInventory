@@ -63,7 +63,11 @@ public class InventoryController {
     @RequestMapping(value = "/itens", method = RequestMethod.DELETE)
     @ResponseBody
     public ResponseEntity deleteItem(@RequestBody Item item){
-        itemRepository.delete(item);
+        if(item.getFuncionario() != null) {
+            Funcionario funcionario = funcionarioRepository.findById(Integer.parseInt(item.getFuncionario())).get();
+            funcionario.rmItem(item.getIdentificador());
+        }
+        itemRepository.delete(itemRepository.findById(item.getIdentificador()).get());
         return new ResponseEntity(HttpStatus.OK);
     }
 
