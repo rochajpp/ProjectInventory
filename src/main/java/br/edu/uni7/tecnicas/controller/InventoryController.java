@@ -144,14 +144,15 @@ public class InventoryController {
     public ResponseEntity removerItemDeFuncionario(@RequestBody Item item){
 
         item = itemRepository.findById(item.getIdentificador()).get();
-        item.setFuncionario(null);
-        itemRepository.save(item);
 
-        Integer matricula = Integer.parseInt(itemRepository.findById(item.getIdentificador()).get().getFuncionario());
+
+        Integer matricula = Integer.parseInt(itemRepository.findById(item.getIdentificador()).get().getFuncionario().substring(0, 3));
 
         Funcionario funcionario = funcionarioRepository.findById(matricula).get();
         funcionario.rmItem(item.getIdentificador());
         funcionarioRepository.save(funcionario);
+        item.setFuncionario(null);
+        itemRepository.save(item);
         return new ResponseEntity(HttpStatus.OK);
     }
 

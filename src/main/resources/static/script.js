@@ -387,4 +387,5 @@ function removerItemFunc(){
 
      var data = JSON.stringify({"identificador": identificador});
      sendData.send(data);
+     location.href="http://localhost:8080/item_funcionario.html?matricula=" + matricula;
 }
