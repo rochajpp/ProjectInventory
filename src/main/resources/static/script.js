@@ -288,10 +288,12 @@ function criaLinhaFuncionario(funcionario){
     let editar = document.createElement("button");
     editar.classList.add("button");
     editar.textContent = "Editar";
+    editar.onclick = function(){location.href="http://localhost:8080/atualizacao_funcionario.html?matricula=" + matricula}
 
     let apagar = document.createElement("button");
     apagar.classList.add("button");
-    apagar.textContent = "Apagar";
+    apagar.textContent = "Remover";
+    apagar.onclick = function(){location.href="http://localhost:8080/deletar_funcionario.html?matricula=" + matricula + "&nome=" + nome};
 
     partButton.appendChild(itens);
     partButton.appendChild(editar);
@@ -382,10 +384,62 @@ function removerItemFunc(){
 
      var sendData = new XMLHttpRequest();
 
-     sendData.open("PUT", "funcionarios", true);
+     sendData.open("PUT", "removeItemfuncionario", true);
      sendData.setRequestHeader("Content-type", "application/json");
 
      var data = JSON.stringify({"identificador": identificador});
      sendData.send(data);
      location.href="http://localhost:8080/item_funcionario.html?matricula=" + matricula;
+}
+
+function mainAtualizarFuncionario(){
+    const urlParams = new URLSearchParams(window.location.search);
+
+    var matricula = urlParams.get("matricula");
+
+    document.getElementById("matriculaInput").value = matricula;
+
+}
+
+function atualizarFuncionario(){
+    const urlParams = new URLSearchParams(window.location.search);
+
+    var matricula = urlParams.get("matricula");
+    var nome = document.getElementById("nomeInput").value;
+
+    let sendData = new XMLHttpRequest();
+
+    sendData.open("PUT", "funcionarios", true);
+    sendData.setRequestHeader("Content-type", "application/json");
+
+
+    var data = JSON.stringify({"matricula": matricula, "nome": nome});
+    sendData.send(data);
+    location.href="http://localhost:8080/gerenciamentoFuncionario.html";
+}
+
+function mainDeletarFuncionario(){
+    const urlParams = new URLSearchParams(window.location.search);
+
+    var matricula = urlParams.get("matricula");
+    var nome = urlParams.get("nome");
+
+    document.getElementById("matriculaInput").value = matricula;
+    document.getElementById("nomeInput").value = nome;
+}
+
+function removerFuncionario(){
+    const urlParams = new URLSearchParams(window.location.search);
+
+    var matricula = urlParams.get("matricula");
+    var nome = urlParams.get("nome");
+
+    let sendData = new XMLHttpRequest();
+
+    sendData.open("DELETE", "funcionarios", true);
+    sendData.setRequestHeader("Content-type", "application/json");
+
+    var data = JSON.stringify({"matricula": matricula, "nome": nome});
+    sendData.send(data);
+    location.href="http://localhost:8080/gerenciamentoFuncionario.html";
 }

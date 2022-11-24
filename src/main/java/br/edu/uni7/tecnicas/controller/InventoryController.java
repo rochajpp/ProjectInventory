@@ -139,7 +139,7 @@ public class InventoryController {
         }
     }
 
-    @RequestMapping(value = "/funcionarios", method = RequestMethod.PUT)
+    @RequestMapping(value = "/removeItemfuncionario", method = RequestMethod.PUT)
     @ResponseBody
     public ResponseEntity removerItemDeFuncionario(@RequestBody Item item){
 
@@ -153,6 +153,32 @@ public class InventoryController {
         funcionarioRepository.save(funcionario);
         item.setFuncionario(null);
         itemRepository.save(item);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+    @RequestMapping(value = "/funcionarios", method = RequestMethod.PUT)
+    @ResponseBody
+    public ResponseEntity atualizarFuncionario(@RequestBody Funcionario funcionario){
+        Funcionario funcionarioAtual = funcionarioRepository.findById(funcionario.getMatricula()).get();
+        BeanUtils.copyProperties(funcionario, funcionarioAtual, "matricula");
+
+        funcionarioRepository.save(funcionarioAtual);
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/funcionarios", method = RequestMethod.DELETE)
+    @ResponseBody
+    public ResponseEntity removerFuncionario(@RequestBody Funcionario funcionario){
+
+        funcionario = funcionarioRepository.findById(funcionario.getMatricula()).get();
+        if(funcionario.getItens().size() != 0) {
+            for (int i = 0; i < funcionario.getItens().size(); i++) {
+                Item item = funcionario.getItens().get(i);
+                item.setFuncionario(null);
+            }
+        }
+        funcionarioRepository.deleteById(funcionario.getMatricula());
+
         return new ResponseEntity(HttpStatus.OK);
     }
 

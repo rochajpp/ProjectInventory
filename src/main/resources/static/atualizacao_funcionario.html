@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Atualização funcionário</title>
+</head>
+<body onload = "mainAtualizarFuncionario()">
+  <div class="contentBody">
+    <form>
+      <h1>Funcionário</h1>
+      <label id="matricula" name="matricula">Matrícula</label>
+      <input id="matriculaInput" for="matricula" disabled>
+      <label id="nome" name="nome">Nome</label>
+      <input id="nomeInput" for="nome">
+      <button type="button" class="button" onclick="atualizarFuncionario()">Atualizar</button>
+      <button type="button" class="button" onclick="location.href='http://localhost:8080/gerenciamentoFuncionario.html'">Voltar</button>
+    </form>
+  </div>
+</body>
+</html>
