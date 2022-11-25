@@ -82,6 +82,8 @@ function criaLinha(item){
     tdAnoDeFabricacao = document.createElement("td");
     tdDataDeInclusao = document.createElement("td");
     tdUltimaAtualizacao = document.createElement("td");
+    tdBotoes = document.createElement("td");
+    tdBotoes.appendChild(botoes);
 
 
 
@@ -100,7 +102,7 @@ function criaLinha(item){
     linha.appendChild(tdDataDeInclusao);
     linha.appendChild(tdUltimaAtualizacao);
     linha.appendChild(tdFuncionario);
-    linha.appendChild(botoes);
+    linha.appendChild(tdBotoes);
 
 
     return linha;
