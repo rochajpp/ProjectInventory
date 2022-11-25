@@ -159,9 +159,19 @@ public class InventoryController {
     @ResponseBody
     public ResponseEntity atualizarFuncionario(@RequestBody Funcionario funcionario){
         Funcionario funcionarioAtual = funcionarioRepository.findById(funcionario.getMatricula()).get();
-        BeanUtils.copyProperties(funcionario, funcionarioAtual, "matricula");
+        if(funcionario.getNome() != funcionarioAtual.getNome()) {
+            BeanUtils.copyProperties(funcionario, funcionarioAtual, "matricula", "itens");
 
-        funcionarioRepository.save(funcionarioAtual);
+            funcionarioRepository.save(funcionarioAtual);
+
+            if(funcionarioAtual.getItens().size() > 0){
+                for(int i = 0; i < funcionarioAtual.getItens().size(); i++){
+                    Item item = funcionarioAtual.getItens().get(i);
+                    item.setFuncionario(funcionario.getMatricula() + " - " + funcionario.getNome());
+                    itemRepository.save(item);
+                }
+            }
+        }
 
         return new ResponseEntity(HttpStatus.OK);
     }

@@ -290,7 +290,7 @@ function criaLinhaFuncionario(funcionario){
     let editar = document.createElement("button");
     editar.classList.add("button");
     editar.textContent = "Editar";
-    editar.onclick = function(){location.href="http://localhost:8080/atualizacao_funcionario.html?matricula=" + matricula}
+    editar.onclick = function(){location.href="http://localhost:8080/atualizacao_funcionario.html?matricula=" + matricula + "&nome=" + nome}
 
     let apagar = document.createElement("button");
     apagar.classList.add("button");
@@ -398,8 +398,10 @@ function mainAtualizarFuncionario(){
     const urlParams = new URLSearchParams(window.location.search);
 
     var matricula = urlParams.get("matricula");
+    var nome = urlParams.get("nome");
 
     document.getElementById("matriculaInput").value = matricula;
+    document.getElementById("nomeInput").value = nome;
 
 }
 
